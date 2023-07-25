@@ -13,7 +13,7 @@
 
 <ul>
     <li th:each="album : ${albums}">
-        <img th:src="${album.getImageURL()}">
+        <img th:src="${album.getImageURL()}" alt="">
         <h2 th:text="${album.getTitle()}"></h2>
         <p>Artist: <span th:text="${album.getArtist()}"></span></p>
         <p>Song Count: <span th:text="${album.getSongCount()}"></span></p>
