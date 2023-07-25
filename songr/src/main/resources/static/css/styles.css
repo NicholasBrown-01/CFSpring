@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-size: 24px;
+
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+
+img {
+    width: 500px;
+    height: auto;
+    border: 3px solid white;
+    margin: 20px;
+}

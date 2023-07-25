@@ -1,14 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Albums</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
-<p>Here is our Albums Page</p>
+<h1>Here is our Albums Page</h1>
+
+<ul>
+    <li th:each="album : ${albums}">
+        <img th:src="${album.getImageURL()}">
+        <h2 th:text="${album.getTitle()}"></h2>
+        <p>Artist: <span th:text="${album.getArtist()}"></span></p>
+        <p>Song Count: <span th:text="${album.getSongCount()}"></span></p>
+        <p>Length: <span th:text="${album.getLength()}"></span></p>
+    </li>
+</ul>
 
 </body>
 </html>
