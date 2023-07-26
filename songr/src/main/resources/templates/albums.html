@@ -11,6 +11,29 @@
 <body>
 <h1>Here is our Albums Page</h1>
 
+<form action="/albums/add" method="POST">
+    <fieldset>
+        <legend>Add Your Album</legend>
+
+        <label>ID</label>
+        <input type="text" name="id">
+
+        <label>Album Name</label>
+        <input type="text" name="title">
+
+        <label>Artist Name</label>
+        <input type="text" name="artist">
+
+        <label>Song Count</label>
+        <input type="text" name="songCount">
+
+        <label>Album Duration (in sec)</label>
+        <input type="text" name="length">
+
+        <input type="submit" value="Add Album">
+    </fieldset>
+</form>
+
 <ul>
     <li th:each="album : ${albums}">
         <img th:src="${album.getImageURL()}" alt="">
