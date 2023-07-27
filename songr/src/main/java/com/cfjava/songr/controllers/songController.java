@@ -40,6 +40,6 @@ public class songController {
 
     songRepository.save(newSong);
 
-    return new RedirectView("/viewAlbum");
+    return new RedirectView("/albums/"+ id);
     }
 }

@@ -9,9 +9,9 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
-<h1>Here is our Albums Page</h1>
+<h1>Available Albums</h1>
 
-<form action="/albums/add" method="POST">
+<form action="/albums" method="POST">
     <fieldset>
         <legend>Add Your Album</legend>
 
@@ -34,14 +34,17 @@
 <ul>
     <li th:each="album : ${albums}">
         <img th:src="${album.getImageURL()}" alt="">
-        <h2>
-            <form th:action="'/albums/' + ${album.id}" method="get">
-                <input type="submit" value="view album">
-            </form>
-        </h2>
-        <p>Artist: <span th:text="${album.getArtist()}"></span></p>
-        <p>Song Count: <span th:text="${album.getSongCount()}"></span></p>
-        <p>Length: <span th:text="${album.getLength()}"></span></p>
+        <ul>
+            <li><h2 th:text="${album.getTitle()}"></h2></li>
+            <li>Artist: <span th:text="${album.getArtist()}"></span></li>
+            <li>Song Count: <span th:text="${album.getSongCount()}"></span></li>
+            <li>Length: <span th:text="${album.getLength()}"></span></li>
+            <li>
+                <form th:action="'/albums/' + ${album.id}" method="get">
+                    <input type="submit" value="View Album">
+                </form>
+            </li>
+        </ul>
     </li>
 </ul>
 

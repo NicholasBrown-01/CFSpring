@@ -16,11 +16,4 @@ public class mainController {
         return "songrsplash";
     }
 
-    @ResponseBody
-    @GetMapping("/hello")
-    public String getHelloWorld() {
-        return "Hello World";
-    }
-
-
 }
