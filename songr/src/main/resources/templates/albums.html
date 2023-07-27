@@ -15,9 +15,6 @@
     <fieldset>
         <legend>Add Your Album</legend>
 
-        <label>ID</label>
-        <input type="text" name="id">
-
         <label>Album Name</label>
         <input type="text" name="title">
 
@@ -37,7 +34,11 @@
 <ul>
     <li th:each="album : ${albums}">
         <img th:src="${album.getImageURL()}" alt="">
-        <h2 th:text="${album.getTitle()}"></h2>
+        <h2>
+            <form th:action="'/albums/' + ${album.id}" method="get">
+                <input type="submit" value="view album">
+            </form>
+        </h2>
         <p>Artist: <span th:text="${album.getArtist()}"></span></p>
         <p>Song Count: <span th:text="${album.getSongCount()}"></span></p>
         <p>Length: <span th:text="${album.getLength()}"></span></p>

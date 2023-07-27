@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Single Album View</title>
+</head>
+<h1>Single Album View</h1>
+<span th:text = "${'Album title : ' + album.title}"></span>
+
+<body>
+
+<form action="/songs" method="POST">
+    <fieldset>
+        <legend>Add Your Song</legend>
+
+        <label>Song Name</label>
+        <input type="text" name="title">
+
+        <label>SongDuration (in sec)</label>
+        <input type="text" name="length">
+
+        <label>Track Number</label>
+        <input type="text" name="trackNumber">
+
+        <input type="hidden" name="id" th:value="${album.id}">
+
+        <input type="submit" value="Add Song">
+    </fieldset>
+</form>
+
+<ul>
+    <li th:each="song : ${album.songs}">
+        <h2 th:text="${song.getTitle()}"></h2>
+        <p>Length: <span th:text="${song.getLength()}"></span></p>
+        <p>TrackNumber <span th:text="${song.getTrackNumber()}"></span></p>
+    </li>
+</ul>
+
+
+</body>
+</html>

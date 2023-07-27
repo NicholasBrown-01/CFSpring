@@ -1,10 +1,9 @@
 package com.cfjava.songr.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 // STEP 1: ADD @ENTITY TO CLASS
 @Entity
@@ -18,7 +17,8 @@ public class Album {
     Integer songCount;
     Integer length;
     String imageURL;
-
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<Song> songs;
     public Album() {
     }
 
@@ -28,18 +28,7 @@ public class Album {
         this.id = id;
     }
 
-    // CONSTRUCTOR WITH id
-    public Album(long id, String title, String artist, Integer songCount, Integer length, String imageURL) {
-        this.id = id;
-        this.title = title;
-        this.artist = artist;
-        this.songCount = songCount;
-        this.length = length;
-        this.imageURL = imageURL;
-    }
-
-    // CONSTRUCTOR WITHOUT id
-
+    // CONSTRUCTOR WITHout id
     public Album(String title, String artist, Integer songCount, Integer length, String imageURL) {
         this.title = title;
         this.artist = artist;
@@ -47,6 +36,7 @@ public class Album {
         this.length = length;
         this.imageURL = imageURL;
     }
+
 
     public String getTitle() {
         return title;
@@ -84,7 +74,36 @@ public class Album {
         return imageURL;
     }
 
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", artist='" + artist + '\'' +
+                ", songCount=" + songCount +
+                ", length=" + length +
+                ", imageURL='" + imageURL + '\'' +
+                ", songs=" + songs +
+                '}';
     }
 }
